@@ -73,7 +73,7 @@ export async function generateSummary(status_bar) {
         4
     )}\\), shear \\(\\hat{s}=r\\mathrm{d\\,ln}q/\\mathrm{d}r=${(
         inverse_scale_length_diag_flux('q') * rgDiag
-    ).toFixed(4)}\\), \\(s_{2}=r^{2}q^{\\prime\\prime}/q^{2}=${(
+    ).toFixed(4)}\\), \\(s_{2}=r\\sqrt{q^{\\prime\\prime}}/q=${(
         interpolationDerivativeAt(rgDiag, data['rg'], qprime) *
         Math.pow(rgDiag / value_diag_flux('q'), 2)
     ).toFixed(
@@ -116,7 +116,7 @@ export async function generateSummary(status_bar) {
                 title: 'Reverse Shear Coefficient',
                 tag: '$s_2$',
                 data: zip(
-                    (qpp, r, q) => qpp * Math.pow(r / q, 2),
+                    (qpp, r, q) => (Math.sqrt(qpp) * r) / q,
                     qpp,
                     data.rg,
                     data.q
