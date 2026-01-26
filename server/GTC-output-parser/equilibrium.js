@@ -79,7 +79,7 @@ class Equilibrium extends PlotType {
         super(filePath);
 
         this.plotTypes = {
-            x: ['psi', 'minor', 'torpsi', 'rg'],
+            x: ['psi', 'minor', 'tor_psi', 'rg'],
             y: [
                 'psi',
                 'Te',
