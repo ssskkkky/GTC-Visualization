@@ -130,8 +130,11 @@ window.addEventListener('load', () => {
     const navi_segments = [
         ...document.querySelector('#breadcrumb-container').children,
     ];
-    const clearDropdown = () => {
+    const clearDropdown = exception => {
         navi_segments.forEach(s => {
+            if (s === exception) {
+                return;
+            }
             s.classList.remove('active');
             for (const child of s.children) {
                 child.classList.remove('active');
@@ -222,7 +225,7 @@ window.addEventListener('load', () => {
                 constructFolderContentList(parentEntry, currentEntry)
             );
             seg.addEventListener('click', event => {
-                clearDropdown();
+                clearDropdown(event.currentTarget);
                 for (const child of event.currentTarget.children) {
                     child.classList.toggle('active');
                 }
