@@ -138,10 +138,14 @@ class History extends PlotType {
                         type === 'point'
                             ? i == 0
                                 ? `$${PlotType.fieldDisplayName[cat]} (\\theta=\\zeta=0)$`
-                                : `$${add_to_subscript(
-                                      PlotType.fieldDisplayName[cat],
-                                      '00'
-                                  )} (\\text{iflux@diag})$`
+                                : `$${
+                                      cat == 'phi'
+                                          ? '\\partial_{\\psi_p} \\phi_{00}'
+                                          : add_to_subscript(
+                                                PlotType.fieldDisplayName[cat],
+                                                '00'
+                                            )
+                                  } (\\text{iflux@diag})$`
                             : `$${
                                   i == 0
                                       ? '\\text{ZF}'
